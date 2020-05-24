@@ -1,0 +1,12 @@
+policies:
+  - name: VPC-flow-logs
+    description: |
+      Policy which will enforce FLow Logs and create Loggroup for logs. 
+    resource: vpc
+    filters:
+      - type : flow-logs
+        enabled : false
+    actions:
+      - type: set-flow-log
+        DeliverLogsPermissionArn: arn:aws:iam::{account_id}:role/flowlogsRole # Change the role ARN
+        LogGroupName: /custodian/vpc/flowlogs/ 

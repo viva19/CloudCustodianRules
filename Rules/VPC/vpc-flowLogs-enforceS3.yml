@@ -1,0 +1,11 @@
+policies:
+  - name: VPC-flow-logs
+    Description:
+    resource: vpc
+    filters:
+      - type : flow-logs
+        enabled : false
+    actions:
+      - type: set-flow-log
+        LogDestinationType: s3
+        LogDestination: s3-arn # Replace the S3 ARN 

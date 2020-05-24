@@ -1,0 +1,8 @@
+2020-05-24 14:33:05,742 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-1 count:1 time:0.00
+2020-05-24 14:33:24,832 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-2 count:2 time:0.83
+2020-05-24 14:36:01,550 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-2 count:1 time:0.36
+2020-05-24 14:36:10,264 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-2 count:1 time:0.30
+2020-05-24 14:37:50,865 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-2 count:1 time:0.34
+2020-05-24 14:38:04,643 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-2 count:1 time:0.30
+2020-05-24 14:42:14,624 - custodian.policy - INFO - policy:Default-VPC-in-use resource:vpc region:us-west-2 count:1 time:0.35
+2020-05-24 14:42:15,129 - custodian.policy - INFO - policy:Default-VPC-in-use action:createflowlogs resources:1 execution_time:0.51

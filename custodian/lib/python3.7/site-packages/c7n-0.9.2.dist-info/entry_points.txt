@@ -1,0 +1,3 @@
+[console_scripts]
+custodian = c7n.cli:main
+
