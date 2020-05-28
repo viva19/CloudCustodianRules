@@ -1,0 +1,17 @@
+policies:
+  - name: s3-best-practices
+    description: |
+      Checks for general S3 best practices
+    resource: aws.s3
+    filters:
+      - not :
+        - type: is-log-target
+      - or:
+        - type: bucket-encryption
+          state: false
+        - type: bucket-logging
+          op: disabled 
+        - type: check-public-block
+          BlockPublicAcls: true
+          BlockPublicPolicy: true
+        - type: cross-account

@@ -1,0 +1,6 @@
+policies:
+  - name: check-for-NonCMK-Keys-Used
+    resource: kms-key
+    filters:
+      - not:
+        - KeyManager : CUSTOMER

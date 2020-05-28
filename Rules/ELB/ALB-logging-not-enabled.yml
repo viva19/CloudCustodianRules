@@ -1,0 +1,7 @@
+policies:
+  - name: alb-logging-not-enabled
+    description: |
+      Application ELB not setup with logging
+    resource: app-elb
+    filters:
+      - type: is-not-logging

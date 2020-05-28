@@ -1,0 +1,26 @@
+policies:
+  - name: check-kms-key-cross-account
+    resource: kms
+    filters:
+      - type: cross-account
+  - name: kms-with-large-number-of-grants
+    resource: kms
+    filters:
+      - type: grant-count
+        min: 100
+  - name: kms-without-annual-key-rotation
+    resource: kms
+    filters:
+      - type: grant-count
+        min: 100
+  - name: kms-key-disabled-rotation
+    resource: kms-key
+    filters:
+      - type: key-rotation-status
+        key: KeyRotationEnabled
+        value: false 
+    actions:
+      - type: set-rotation
+        state: True
+
+      

@@ -1,0 +1,17 @@
+policies:
+  - name: security-group-allow-public-ssh-RDP
+    resource: aws.security-group
+    filters:
+      - type: ingress
+        Ports: [22, 3389]
+        Cidr:
+          value:
+            - "0.0.0.0/0"
+            - "::/0"
+          op: in
+#Remove the commects if you want to whitelist Security groups
+#      - type: ingress
+#        SGReferences:
+#          key: "tag:Access"
+#          value: "Public"
+#          op: equal 

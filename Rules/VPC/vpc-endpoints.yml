@@ -1,0 +1,13 @@
+policies:
+  - name: VPC-check-for-Endpoints
+    description: |
+      Checks for VPC Endpoints to be used for S3 and KMS. 
+    resource: aws.vpc-endpoint
+    filters:
+      #- not:
+        - or:
+          - ServiceName: com.amazonaws.{region}.kms
+          - ServiceName: com.amazonaws.{region}.s3
+        - and:
+          - PrivateDnsEnabled: False
+# Need to configure the Dashboard to report VPC endpoints not bieng used for KMS and S3

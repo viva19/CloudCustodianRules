@@ -1,6 +1,7 @@
 policies:
   - name: VPC-flow-logs
-    Description:
+    description: |
+      Policy which will enforce FLow Logs and create S3 bucket for logs. 
     resource: vpc
     filters:
       - type : flow-logs

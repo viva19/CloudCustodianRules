@@ -1,0 +1,10 @@
+policies:
+  - name: rds-mandatory-tags
+    description: |
+      Checks for mandortory tags for RDS
+    resource: rds
+    filters:
+      - or: 
+        - "tag:classification" : absent
+        - "tag:costcenter" : absent
+        - "tag:project" : absent

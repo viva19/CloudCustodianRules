@@ -1,0 +1,13 @@
+policies:
+  - name: check-for-ViaService-Not-bieng-Used
+    resource: kms-key
+    filters:
+      - or :
+        - not:
+          - cross-account
+        - cross-account
+      - not :
+        - type : value
+          key: "Policy"
+          op: contains
+          value: ViaService

@@ -1,0 +1,9 @@
+policies:
+  - name: appelb-configured-with-HTTP
+    description: |
+      Application ELB setup with HTTP not HTTPS
+    resource: app-elb
+    filters:
+      - type: listener
+        key: Protocol
+        value: HTTP

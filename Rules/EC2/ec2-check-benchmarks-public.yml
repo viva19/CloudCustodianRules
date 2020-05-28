@@ -1,0 +1,23 @@
+policies:
+  - name: ec2-public-benchmarks
+    description: |
+      Confidential public instance which do not follow the best practices 
+    resource: ec2
+    filters:
+      - and:
+        - type: value
+          key: "State.Name"
+          value: "running"
+        - "PublicIpAddress": present
+        - or :
+          - Monitoring.State: disabled
+          - not:
+            - type: termination-protected
+          - type: ebs
+            key: Encrypted
+            value: false
+# optional Action
+#    actions:
+#      - type: stop
+#        hibernate: true
+

@@ -1,0 +1,17 @@
+policies:
+  - name: terminate-unencrypted-public-rds
+    description: |
+      Terminate all unencrypted or publicly available RDS upon creation
+    resource: rds
+    mode:
+      type: cloudtrail
+      events:
+        - CreateDBInstance
+      role: custodian
+    filters:
+      - or:
+          - StorageEncrypted: false
+          - PubliclyAccessible: true
+    actions:
+      - type: delete
+        skip-snapshot: true

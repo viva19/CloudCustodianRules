@@ -1,0 +1,23 @@
+policies:
+  - name: IAM-Users-with-privilegedEC2Access
+    description: |
+      IAM Users with access to make privileged EC2 changes
+    resource: iam-user
+    filters:
+      - type: check-permissions
+        match: allowed
+        actions:
+            -  ec2:CopySnapshot
+            -  ec2:DeleteFlowLogs
+            -  ec2:DeleteLaunchTemplate
+            -  ec2:ModifyVpcEndpointServicePermissions
+            -  ec2:ResetSnapshotAttribute
+            -  ec2:RevokeSecurityGroupIngress
+            -  ec2:GetPasswordData
+            -  ec2:GetLaunchTemplateData
+            -  ec2:DeleteNetworkInterfacePermission
+            -  ec2:ModifySnapshotAttribute
+            -  ec2:CreateNetworkInterfacePermission
+            -  ec2:RevokeSecurityGroupEgress
+            -  ec2:DeleteNatGateway
+            -  ec2:DeleteNetworkAclEntry

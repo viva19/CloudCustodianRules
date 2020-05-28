@@ -1,0 +1,11 @@
+policies:
+  - name: ec2-check-classification-tags-running-instance
+    description: |
+      Checks for CLassification tags based on sensitivity of data bieng processed
+    resource: aws.ec2
+    filters:
+      - type: value
+        key: "State.Name"
+        value: "running"
+
+      - "tag:Classification": absent

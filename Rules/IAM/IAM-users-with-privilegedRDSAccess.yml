@@ -1,0 +1,17 @@
+policies:
+  - name: IAM-Users-with-privilegedRDSAccess
+    description: |
+      IAM Users with access to make privileged RDS changes
+    resource: iam-user
+    filters:
+      - type: check-permissions
+        match: allowed
+        actions:
+          -  rds:AuthorizeDBSecurityGroupIngress
+          -  rds:AddRoleToDBInstance
+          -  rds:StartExportTask
+          -  rds:ModifyDBClusterParameterGroup
+          -  rds:ModifyDBInstance
+          -  rds:RevokeDBSecurityGroupIngress
+          -  rds:ModifyDBSubnetGroup
+          -  rds:RemoveRoleFromDBInstance

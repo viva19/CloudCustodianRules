@@ -1,0 +1,17 @@
+policies:
+  - name: PublicIP-automatically-attached-to-EC2
+    description: |
+      Any instance launched with public IP addresses during launch will be terminated. 
+    resource: aws.ec2
+    mode:
+      type: cloudtrail
+      events:
+          - RunInstances
+      role: custodian
+    filters:
+      - type: event                                                                           
+        key: "detail.requestParameters.networkInterfaceSet.items[0].associatePublicIpAddress" 
+        value: true 
+    actions:
+      - type: terminate
+        force: true

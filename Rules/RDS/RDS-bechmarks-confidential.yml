@@ -1,0 +1,17 @@
+policies:
+  - name: rds-benchmarks-confidential-RDS
+    description: |
+      Checks configurations for confidentials RDS 
+    resource: rds
+    filters:
+      - type: value
+        key: "tag:classification"
+        value: "confidential"
+      - or:     
+        - type: default-vpc
+        - BackupRetentionPeriod: 0
+        - MultiAZ: false
+        - AutoMinorVersionUpgrade: false
+        - PubliclyAccessible: true
+        - StorageEncrypted: false
+        - DeletionProtection: false

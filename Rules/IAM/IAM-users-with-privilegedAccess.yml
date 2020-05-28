@@ -1,0 +1,36 @@
+policies:
+  - name: IAM-Users-with-privilegedAccess
+    description: |
+      IAM Users with access to make privileged changes
+    resource: iam-user
+    filters:
+      - type: check-permissions
+        match: allowed
+        actions:
+            - iam:CreateUser
+            - iam:UpdateAssumeRolePolicy
+            - iam:PutRolePermissionsBoundary
+            - iam:DeletePolicy
+            - iam:AttachRolePolicy
+            - iam:PutRolePolicy
+            - iam:DeleteRolePermissionsBoundary
+            - iam:DetachRolePolicy
+            - iam:DeleteRolePolicy
+            - iam:DetachGroupPolicy
+            - iam:CreatePolicyVersion
+            - iam:DetachUserPolicy
+            - iam:PutGroupPolicy
+            - iam:DeleteAccountPasswordPolicy
+            - iam:PutUserPermissionsBoundary
+            - cloudtrail:UpdateTrail
+            - iam:AttachUserPolicy
+            - iam:DeleteUserPolicy
+            - iam:DeleteUserPermissionsBoundary
+            - iam:CreatePolicy
+            - iam:AttachGroupPolicy
+            - cloudtrail:DeleteTrail
+            - iam:PutUserPolicy
+            - cloudtrail:CreateTrail
+            - iam:DeleteGroupPolicy
+            - iam:DeletePolicyVersion
+            - iam:SetDefaultPolicyVersion
