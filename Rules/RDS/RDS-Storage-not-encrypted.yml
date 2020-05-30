@@ -1,0 +1,7 @@
+policies:
+  - name: rds-storage-not-encrypted
+    description: |
+      Checks configurations for confidentials RDS 
+    resource: rds
+    filters:
+      - StorageEncrypted: false

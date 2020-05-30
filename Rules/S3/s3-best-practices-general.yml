@@ -9,7 +9,7 @@ policies:
       - or:
         - type: bucket-encryption
           state: false
-        - type: bucket-logging
+        - bucket-logging
           op: disabled 
         - type: check-public-block
           BlockPublicAcls: true

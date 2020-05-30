@@ -1,0 +1,7 @@
+policies:
+  - name: rds-snapshots-shared-crossaccount
+    description: |
+      Checks for RDS snapshots shared cross Accounts
+    resource: rds-snapshot
+    filters:
+      - cross-account

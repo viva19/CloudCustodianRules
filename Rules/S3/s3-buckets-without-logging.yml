@@ -1,0 +1,7 @@
+policies:
+  - name: s3-buckets-without-logging
+    description: |
+      Checks for general S3 buckets without access logging setup
+    filters:
+      - type: bucket-logging
+        op: disabled 

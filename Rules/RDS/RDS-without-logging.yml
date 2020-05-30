@@ -1,0 +1,10 @@
+policies:
+  - name: rds-without-logging
+    description: |
+      Checks for RDS instances without logging
+    resource: rds
+    filters:
+      - or :
+        - PerformanceInsightsEnabled: false
+        - EnabledCloudwatchLogsExports : absent
+        - MonitoringInterval: 0

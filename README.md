@@ -100,10 +100,57 @@ Sectoion 9 : Access Control
 
 
 Cryptography:
-KMS 
-ACM
-ALB
-ELB
-RDS for encryption
-EC2 for encryption
+|  AWS Service      | Rule Name | Description | 
+| ----------- | ----------- | ----------- | 
+|KMS| [Check for non-CMK keys](./Rules/KMS/kms-non-CMK-used.yml)| Rules checks for non-cmk keys used|
+|KMS| [Check for ViaService Statement bieng used](Rules/KMS/kms-check-ViaService.yml) | Rules to check ViaService is being used|
+| KMS | [Check for KMS best practices](./Rules/KMS/kms-best-practices.yml)| Rules to check for KMS general practices|
+| ELB| [Classic Load Balanacer does not use SSL](./Rules/ELB/ELB-no-SSL-used.yml) | Rules to check for non-ssl configured ELB used|
+| ALB| [Application Load Balancer configured with HTTP](./Rules/ELB/ALB-HTTP-used.yml)| Rules to check for ALB configured for HTTP|
+| RDS| [RDS Non-encrypted bieng used](./Rules/RDS/RDS-Storage-not-encrypted.yml)| Rule checks for RDS without encryption |
+|EC2| [EC2 instances with non-encrypted EBS Volumes](./Rules/EC2/ec2-check-non-encrypted-volumes.yml)| Rule checks for EC2 instances without non encrypted EBS volume|
 
+
+
+Operational Security
+|  AWS Service      | Rule Name | Description | 
+| ----------- | ----------- | ----------- | 
+|RDS| [RDS with snapshot retention less than 7 days](./Rules/RDS/RDS-with-backup-less-than-7days.yml)| Checks for RDS instances with less than 7 days of snapshot retention|
+|RDS|[RDS without logging setup](./Rules/RDS/RDS-without-logging.yml)| Checks for RDS instances with no logging setup|
+|EC2|[EC2 instances without monitoing used](./Rules/EC2/ec2-monitoring-disabled.yml)| Checks for all the EC2 instances with monitoring state disabled|
+|EBS|[EBS volumes which are not fault tolerant](./Rules/EC2/ebs-not-fault-tolerant.yml)| Checks for EBS volumes which do not have snapshots taken for last 7 days|
+|S3|[S3 Buckets configured without logging]| Checks for S3 buckets without logging setup|
+|ALB| [ALBs without logging ](./Rules/ELB/ALB-logging-not-enabled.yml)| Checks for ALBs without logging|
+|ELB|[ELB without logging](./Rules/ELB/ELB-logging-not-enabled.yml)|Checks for Classic ELB configured without logging|
+
+##### TODO Add cloudtrail
+
+Communication Security
+| ELB| [Classic Load Balanacer does not use SSL](./Rules/ELB/ELB-no-SSL-used.yml) | Rules to check for non-ssl configured ELB used|
+| ALB| [Application Load Balancer configured with HTTP](./Rules/ELB/ALB-HTTP-used.yml)| Rules to check for ALB configured for HTTP|
+| EC2 | [Bechmark checks for Public EC2 instance](./Rules/EC2/ec2-check-benchmarks-public.yml) | Checks for public EC2 instances|
+|SG|[Security Groups allow HTTP ](./Rules/SecurityGroup/security-group-allow-HTTP.yml)| Checks for Security group allowing public HTTPS|
+
+##### TODO Write rule to check for Ciphers
+
+
+Section 14: System acquisition, development and maintenance 
+
+| EC2 | [Bechmark checks for Public EC2 instance](./Rules/EC2/ec2-check-benchmarks-public.yml) | Checks for public EC2 instances|
+| S3 | [Benchmarks for General S3 Buckets](./Rules/S3/s3-best-practices-general.yml) | Checks for general S3 buckets with best practices |
+| RDS| [ Terminate Public and Encrypted RDS instance](./Rules/RDS/RDS-terminate-public-unecrypted-instance.yml) | Terminate RDS instances with Public IP addresses and Uncrypted via the CloudWatch Events. |
+| RDS| [Bechmark checks for confidential RDS instance](./Rules/RDS/RDS-bechmarks-confidential.yml) | Checks for Confidential classified RDS instances not implementing the required practices |
+
+|SG|[Security Groups allow HTTP ](./Rules/SecurityGroup/security-group-allow-HTTP.yml)| Checks for Security group allowing public HTTPS|
+|SG|[Security Groups allow Public SSH and RDP](./Rules/SecurityGroup/security-group-allow-public-ssh-rdp.yml)| Checks for Security group allowing public SSH and RDP|
+|RDS|[RDS Snapshot shared cross-Account](./Rules/RDS/RDS-snapshot-crossaccount.yml)| Checks for RDS snapshots shared cross accounts|
+|EBS|[EBS Snapshots shared cross Account](./Rules/EC2/ebs-snapshot-crossaccount.yml)|Checks for Cross acount shared EBS snapshots|
+
+
+Section 17: Information security aspects of business continuity management 
+
+| EC2 | [Bechmark checks for Confidential EC2 instance](./Rules/EC2/ec2-check-benchmarks-confidential.yml) | Checks for Confidential classified EC2 instance with best practices |
+| EC2 | [Bechmark checks for Public EC2 instance](./Rules/EC2/ec2-check-benchmarks-public.yml) | Checks for public EC2 instances|
+|RDS| [RDS with snapshot retention less than 7 days](./Rules/RDS/RDS-with-backup-less-than-7days.yml)| Checks for RDS instances with less than 7 days of snapshot retention|
+|EBS|[EBS volumes which are not fault tolerant](./Rules/EC2/ebs-not-fault-tolerant.yml)| Checks for EBS volumes which do not have snapshots taken for last 7 days|
+| RDS| [Bechmark checks for confidential RDS instance](./Rules/RDS/RDS-bechmarks-confidential.yml) | Checks for Confidential classified RDS instances not implementing the required practices |

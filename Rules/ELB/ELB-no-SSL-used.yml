@@ -1,0 +1,8 @@
+policies:
+  - name: ELB-without-ssl-bieng-used
+    description: |
+      Checks for ELBs configured without SSL configured
+    resource: elb
+    filters:
+      - not:
+        - type: is-ssl

@@ -1,0 +1,7 @@
+policies:
+  - name: ebs-snapshot-crossaccount
+    description: |
+      Checks for EBS snapshots which are shared amongs other AWS accounts
+    resource: ebs-snapshot
+    filters:
+      - cross-account

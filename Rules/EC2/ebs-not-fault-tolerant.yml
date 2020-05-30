@@ -1,0 +1,10 @@
+policies:
+  - name: ebs-not-volume-tolerant
+    description: |
+      Identify EBS volumes which do not have EBS snapshots within last 7 days
+    resource: ebs
+    filters:
+      - type: fault-tolerant
+        tolerant: false
+
+#Required AWS premium support to use this rule

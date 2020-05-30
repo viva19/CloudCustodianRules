@@ -16,7 +16,7 @@ policies:
             - type: termination-protected
           - type: ebs
             key: Encrypted
-            value: true
+            value: false
           - Monitoring.State: disabled
           - IamInstanceProfile: absent
           - type: instance-attribute

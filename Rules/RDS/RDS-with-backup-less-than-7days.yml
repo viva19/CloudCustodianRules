@@ -1,0 +1,10 @@
+policies:
+  - name: rds-backups-retention-lt-7-days
+    description: |
+      Checks for RDS instances with less than 7 days of backup retention
+    resource: rds
+    filters:
+      - type: value
+        key: BackupRetentionPeriod
+        value: 7
+        op: lt

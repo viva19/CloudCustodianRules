@@ -1,0 +1,9 @@
+policies:
+  - name: ec2-instance-with-non-encrypted-storage
+    description: |
+      Rules checks for instances with non-encrypted Instances
+    resource: ec2
+    filters:
+      - type: ebs
+        key: Encrypted
+        value: false

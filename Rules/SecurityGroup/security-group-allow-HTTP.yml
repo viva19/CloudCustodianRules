@@ -1,0 +1,11 @@
+policies:
+  - name: security-group-allow-public-HTTP
+    resource: aws.security-group
+    filters:
+      - type: ingress
+        Ports: [80]
+        Cidr:
+          value:
+            - "0.0.0.0/0"
+            - "::/0"
+          op: in
