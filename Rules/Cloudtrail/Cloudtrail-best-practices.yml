@@ -1,0 +1,12 @@
+policies:
+  - name: cloudtrail-best-practice
+    description: |
+      Checks for cloudtrail violating 
+    resource: aws.cloudtrail
+    filters:
+      - or : 
+        - IncludeGlobalServiceEvents : false
+        - IsMultiRegionTrail: false
+        - LogFileValidationEnabled: false
+        - HasCustomEventSelectors: false
+        - IsOrganizationTrail : false
